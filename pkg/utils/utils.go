@@ -14,7 +14,16 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 )
 
-func ClusterName() string {
+func ClusterName(a, b string) string {
+	if a != "" && b != "" {
+		return ""
+	}
+	if a != "" {
+		return a
+	}
+	if b != "" {
+		return b
+	}
 	return fmt.Sprintf("%s-%d", namer.RandomName(), time.Now().Unix())
 }
 
